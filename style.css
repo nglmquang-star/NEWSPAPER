@@ -1,0 +1,34 @@
+body {
+    /* ----- ĐÂY LÀ PHẦN CHÈN HÌNH NỀN ----- */
+     /* Thay 'hinh-nen.jpg' bằng tên file hình nền của bạn */
+    background-image: url('hinh-nen.jpg');
+    
+    /* Các thuộc tính thêm cho hình nền */
+    background-size: cover; /* Phủ kín trang */
+    background-position: center; /* Căn giữa hình */
+    background-attachment: fixed; /* Giữ hình nền cố định khi cuộn trang */
+    
+    /* ------------------------------------- */
+
+    /* Các trang trí thêm cho dễ đọc */
+    color: white; /* Chữ màu trắng (nếu nền bạn tối) */
+    text-shadow: 1px 1px 2px black; /* Đổ bóng chữ cho dễ đọc */
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.gallery {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.3); /* Nền mờ cho khu vực ảnh */
+    border-radius: 8px;
+}
+
+/* Định dạng cho các ảnh bạn chèn vào */
+.gallery img {
+    width: 80%; /* Chiều rộng của mỗi ảnh */
+    max-width: 700px; /* Chiều rộng tối đa */
+    margin: 15px; /* Khoảng cách giữa các ảnh */
+    border: 4px solid white; /* Viền trắng cho ảnh */
+    border-radius: 5px; /* Bo góc */
+}
