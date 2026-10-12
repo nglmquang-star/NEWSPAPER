@@ -3,22 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEWSPAPER</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Nếp Son Làng Việt - Khoa Quản Trị UEH</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Times New Roman', Times, serif; 
+        }
+        /* Hình nền poster */
+        .bg-image {
+            background-image: url('poster.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        /* Lớp đen mờ */
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.55);
+            min-height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        /* Hộp nội dung Glassmorphism */
+        .content-box {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+        h1 {
+            color: #8b0000;
+            font-size: 2.2em;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        p.subtitle {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        /* Khung hiển thị cuộn dọc */
+        .scroll-container {
+            width: 100%;
+            height: 650px; /* Chiều cao hiển thị */
+            border: 2px solid #8b0000;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            overflow-y: auto; /* Bật tính năng cuộn dọc */
+            padding: 15px;
+            box-sizing: border-box;
+        }
+        /* Định dạng từng trang hình ảnh bên trong */
+        .scroll-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 20px; /* Khoảng cách giữa các trang */
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Đổ bóng nhẹ cho từng trang PDF */
+        }
+        .scroll-container img:last-child {
+            margin-bottom: 0; /* Xóa khoảng cách ở trang cuối cùng */
+        }
+        /* Trang trí thanh cuộn (Scrollbar) cho đẹp mắt */
+        .scroll-container::-webkit-scrollbar {
+            width: 10px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+            border-radius: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #8b0000; 
+            border-radius: 8px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #5a0000; 
+        }
+    </style>
 </head>
 <body>
-
-
-    <div class="gallery">
-        <img src="1.jpg" alt="Trang 1">
-        <img src="2.jpg" alt="Trang 2">
-	<img src="3.jpg" alt="Trang 3">
-        <img src="4.jpg" alt="Trang 4">
-	<img src="5.jpg" alt="Trang 5">
-	<img src="6.jpg" alt="Trang 6">
-	<img src="7.jpg" alt="Trang 7">
-	<img src="8.jpg" alt="Trang 8">
+    <div class="bg-image"></div>
+    <div class="overlay">
+        <div class="content-box">
+            <h1>NẾP SON LÀNG VIỆT</h1>
+            <p class="subtitle">Chương trình Giáo dục truyền thống,Tìm hiễu và Phát huy giá trị Văn hóa gia đình Việt Nam - Khoa Quản Trị UEH</p>
+            
+            <!-- Khung chiếu hình ảnh cuộn dọc -->
+            <div class="scroll-container" id="planContainer">
+                <!-- Code Javascript bên dưới sẽ tự động chèn 18 hình vào đây -->
+            </div>
+            
         </div>
+    </div>
 
+    <!-- Đoạn code tự động lấy 18 tấm hình xếp nối tiếp nhau -->
+    <script>
+        const container = document.getElementById('planContainer');
+        const totalPages = 18; /* Tổng số trang hình ảnh */
+
+        // Vòng lặp từ 1 đến 18 để chèn hình
+        for (let i = 1; i <= totalPages; i++) {
+            let imgElement = document.createElement('img');
+            imgElement.src = i + '.jpg';  // Gọi file 1.jpg, 2.jpg...
+            imgElement.alt = 'Trang Kế Hoạch ' + i;
+            imgElement.loading = 'lazy';  // Load chậm để web chạy mượt hơn, cuộn tới đâu load tới đó
+            container.appendChild(imgElement);
+        }
+    </script>
 </body>
 </html>
